@@ -8,6 +8,8 @@
 <script>
 const p=new URLSearchParams(location.search);
 const m=document.getElementById('msg');
+// Sign-ins started from the Shorts Uploader app on this computer go back to it with the code.
+if(p.get('state')==='studio'){location.replace('http://localhost:8765/callback'+location.search);}
 if(p.get('code')){m.innerHTML='TikTok account connected. Authorization code:<br><code></code>';m.querySelector('code').textContent=p.get('code');}
 else if(p.get('error')){m.textContent='Sign-in failed: '+p.get('error');}
 else{m.textContent='Nothing to show here.';}
